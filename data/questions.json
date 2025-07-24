@@ -1,3 +1,102 @@
-{
-    "_comment": "This file contains an array of questions. Add your questions here."
-}
+[
+  {
+    "question": "What is the correct file extension for Python files?",
+    "options": [
+      "A. .pt",
+      "B. .py",
+      "C. .pyt",
+      "D. .python"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "Which of the following is a valid Python variable name?",
+    "options": [
+      "A. 2value",
+      "B. value_2",
+      "C. value-2",
+      "D. value 2"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "Which function is used to display output in Python?",
+    "options": [
+      "A. echo()",
+      "B. output()",
+      "C. print()",
+      "D. display()"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "What is the purpose of indentation in Python?",
+    "options": [
+      "A. To define variable types",
+      "B. To define blocks of code",
+      "C. To improve speed",
+      "D. To comment the code"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "What does the CPU stand for?",
+    "options": [
+      "A. Central Processing Unit",
+      "B. Computer Power Unit",
+      "C. Central Programming Unit",
+      "D. Control Processing Unit"
+    ],
+    "answer": "A"
+  },
+  {
+    "question": "What is the output of the following code? print(2 + 3 * 4)",
+    "options": [
+      "A. 20",
+      "B. 14",
+      "C. 24",
+      "D. 18"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "Which data type is used to store a sequence of characters in Python?",
+    "options": [
+      "A. int",
+      "B. bool",
+      "C. str",
+      "D. float"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "Which of these is NOT a basic component of a computer?",
+    "options": [
+      "A. Input device",
+      "B. Output device",
+      "C. Wi-Fi Router",
+      "D. Processor"
+    ],
+    "answer": "C"
+  },
+  {
+    "question": "What is the keyword used to define a function in Python?",
+    "options": [
+      "A. func",
+      "B. def",
+      "C. define",
+      "D. function"
+    ],
+    "answer": "B"
+  },
+  {
+    "question": "Which of the following is used to repeat a block of code in Python?",
+    "options": [
+      "A. if",
+      "B. function",
+      "C. for",
+      "D. define"
+    ],
+    "answer": "C"
+  }
+]

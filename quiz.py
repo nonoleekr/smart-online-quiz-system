@@ -46,7 +46,12 @@ def take_quiz():
         print(f"\nQ{idx}: {q['question']}")
         for opt in q['options']:
             print(opt)
-        answer = input("Your answer (A/B/C/D): ").strip().upper()
+        valid_answers = {'A', 'B', 'C', 'D'}
+        while True:
+            answer = input("Your answer (A/B/C/D): ").strip().upper()
+            if answer in valid_answers:
+                break
+            print("Answer not valid. Please enter A, B, C, or D.")
         if answer == q['answer']:
             print("Correct!")
             score += 1

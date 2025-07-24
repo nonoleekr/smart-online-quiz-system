@@ -1,6 +1,4 @@
 # Main driver script (program entry point) 
-#hello 
-#bye
 from quiz import take_quiz, view_leaderboard
 from admin import admin_mode
 from utils import exit_program

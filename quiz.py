@@ -6,6 +6,7 @@ from datetime import datetime
 import threading
 import sys
 import time
+import stat
 
 def load_questions():
     path = os.path.join('data', 'questions.json')
@@ -15,6 +16,15 @@ def load_questions():
 
 def save_result(name, score, total):
     path = os.path.join('data', 'leaderboard.json')
+    # Set file to writable before writing (handle cross-platform)
+    if os.path.exists(path):
+        try:
+            if os.name == 'nt':
+                os.chmod(path, stat.S_IWRITE)
+            else:
+                os.chmod(path, 0o666)
+        except Exception:
+            pass
     # Load existing leaderboard
     if os.path.exists(path):
         with open(path, 'r', encoding='utf-8') as f:
@@ -38,6 +48,14 @@ def save_result(name, score, total):
     # Save back
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(leaderboard, f, indent=2)
+    # Set file to read-only after writing (handle cross-platform)
+    try:
+        if os.name == 'nt':
+            os.chmod(path, stat.S_IREAD)
+        else:
+            os.chmod(path, 0o444)
+    except Exception:
+        pass
 
 def calculate_score(user_answers, quiz_questions):
     total = len(quiz_questions)

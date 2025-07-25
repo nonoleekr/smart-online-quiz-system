@@ -1,1 +1,54 @@
 # Sample input/output logs or test results
+
+[2025-07-24 10:01:54] User: ronald
+Score: 9/10
+Quiz Completed Successfully
+
+Question 1: What is the correct file extension for Python files?
+Selected Answer: B. .py
+Correct!
+
+Question 2: Which of the following is a valid Python variable name?
+Selected Answer: B. value_2
+Correct!
+
+Question 3: Which function is used to display output in Python?
+Selected Answer: C. print()
+Correct!
+
+Question 4: What is the purpose of indentation in Python?
+Selected Answer: B. To define blocks of code
+Correct!
+
+Question 5: What does the CPU stand for?
+Selected Answer: A. Central Processing Unit
+Correct!
+
+Question 6: What is the output of the following code? print(2 + 3 * 4)
+Selected Answer: A. 20
+Incorrect. Correct Answer: B. 14
+
+Question 7: Which data type is used to store a sequence of characters in Python?
+Selected Answer: C. str
+Correct!
+
+Question 8: Which of these is NOT a basic component of a computer?
+Selected Answer: C. Wi-Fi Router
+Correct!
+
+Question 9: What is the keyword used to define a function in Python?
+Selected Answer: B. def
+Correct!
+
+Question 10: Which of the following is used to repeat a block of code in Python?
+Selected Answer: C. for
+Correct!
+
+============================================================
+                        Quiz Results
+============================================================
+Quiz complete! tester, your score: 9/10
+Correct: 9, Incorrect: 1, Skipped: 0
+Performance: Excellent (90%)
+
+Press Enter to continue...

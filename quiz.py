@@ -14,7 +14,7 @@ def load_questions():
         questions = json.load(f)
     return questions
 
-def save_result(name, score, total):
+def save_result(name, score):
     path = os.path.join('data', 'leaderboard.json')
     # Set file to writable before writing (handle cross-platform)
     if os.path.exists(path):
@@ -38,11 +38,10 @@ def save_result(name, score, total):
                 leaderboard = []
     else:
         leaderboard = []
-    # Append new result
+    # Append new result (no 'total')
     leaderboard.append({
         'name': name,
         'score': score,
-        'total': total,
         'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     })
     # Save back
@@ -105,7 +104,7 @@ def take_quiz():
     questions = load_questions()
     print("\nWelcome to the Python & Computer Basics Quiz!")
     name = input("Enter your name: ").strip()
-    quiz_questions = random.sample(questions, min(10, len(questions)))
+    quiz_questions = random.sample(questions, 10)
     user_answers = []
     TOTAL_TIME_LIMIT = 120  # seconds for the whole quiz
     start_time = time.time()
@@ -114,7 +113,7 @@ def take_quiz():
         if elapsed >= TOTAL_TIME_LIMIT:
             print("\nTime's up for the quiz!")
             # Mark remaining as skipped
-            for _ in range(idx, len(quiz_questions)+1):
+            for _ in range(idx, 11):
                 user_answers.append(None)
             break
         print(f"\nQ{idx}: {q['question']}")
@@ -139,12 +138,12 @@ def take_quiz():
         if (time.time() - start_time) >= TOTAL_TIME_LIMIT:
             print("\nTime's up for the quiz!")
             # Mark remaining as skipped
-            for _ in range(idx+1, len(quiz_questions)+1):
+            for _ in range(idx+1, 11):
                 user_answers.append(None)
             break
     # Calculate score and feedback
     result = calculate_score(user_answers, quiz_questions)
-    print(f"\nQuiz complete! {name}, your score: {result['correct']}/{result['total']}")
+    print(f"\nQuiz complete! {name}, your score: {result['correct']}/10")
     print(f"Correct: {result['correct']}, Incorrect: {result['incorrect']}, Skipped: {result['skipped']}")
     print(f"Performance: {result['feedback']} ({result['percent']:.0f}%)\n")
     if result['incorrect_details']:
@@ -157,7 +156,7 @@ def take_quiz():
             print(f"Correct answer: {item['correct_answer']}")
     else:
         print("Great job! You got all questions correct.")
-    save_result(name, result['correct'], result['total'])
+    save_result(name, result['correct'])
 
 def view_leaderboard():
     path = os.path.join('data', 'leaderboard.json')
@@ -179,6 +178,6 @@ def view_leaderboard():
     # Sort by score descending, then date
     leaderboard.sort(key=lambda x: (-x['score'], x['date']))
     print("\nLeaderboard:")
-    print(f"{'Rank':<5}{'Name':<15}{'Score':<7}{'Total':<7}{'Date'}")
+    print(f"{'Rank':<5}{'Name':<15}{'Score':<7}{'Date'}")
     for idx, entry in enumerate(leaderboard[:10], 1):
-        print(f"{idx:<5}{entry['name']:<15}{entry['score']:<7}{entry['total']:<7}{entry['date']}")
+        print(f"{idx:<5}{entry['name']:<15}{entry['score']:<7}{entry['date']}")

@@ -55,6 +55,11 @@ def add_question():
         print("Invalid answer. Must be A, B, C, or D.")
         return
     questions = load_questions()
+    # Duplicate prevention: check if question text already exists
+    for q in questions:
+        if q['question'].strip().lower() == question.lower():
+            print("This question already exists in the database. Not adding duplicate.")
+            return
     questions.append({
         'question': question,
         'options': options,

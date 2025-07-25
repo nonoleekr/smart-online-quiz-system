@@ -5,10 +5,10 @@ The Smart Online Quiz System (SOQS) is a command-line Python application that si
 
 ## Features
 - Take a 10-question multiple-choice quiz
-- Instant scoring and feedback
-- Persistent leaderboard (top scores saved)
+- Instant scoring and feedback with qualitative performance assessment
+- Persistent leaderboard (top scores saved, protected from tampering)
 - Password-protected Admin Mode for question management
-- Add, search, edit, and delete quiz questions
+- Add, search, edit, and delete quiz questions (duplicate questions prevented)
 - Modular code structure for easy maintenance
 
 ## File Structure
@@ -32,10 +32,12 @@ The Smart Online Quiz System (SOQS) is a command-line Python application that si
 - Select "Admin Mode" from the main menu.
 - Enter the admin password (default: `admin123`).
 - You can then add, search, edit, or delete questions in the quiz bank.
+- The system prevents adding duplicate questions (case-insensitive).
+- The leaderboard file is automatically set to read-only after updates to prevent tampering. Only the quiz system can write to it.
 
 ## Customization
 - To change the admin password, edit the `ADMIN_PASSWORD` variable in `admin.py`.
-- To add or edit questions directly, you can also modify `data/questions.json`.
+- To add or edit questions directly, you can also modify `data/questions.json` (not recommended; use Admin Mode for validation and duplicate prevention).
 
 ## License
 This project is for educational purposes.

@@ -1,6 +1,6 @@
 # Admin-only features (add, search, delete questions)
 import os
-from utils import load_json_file, save_json_file, validate_input, clear_screen
+from utils import load_json_file, save_json_file, validate_input, clear_screen, print_header
 
 ADMIN_PASSWORD = 'admin123'  # Change as needed
 QUESTIONS_PATH = os.path.join('data', 'questions.json')
@@ -79,6 +79,9 @@ def search_question():
             found = True
     if not found:
         print("No questions found with that keyword.\n")
+    
+    # Add a pause so user can read the search results
+    input("\nPress Enter to continue...")
 
 def edit_question():
     clear_screen()
@@ -87,28 +90,31 @@ def edit_question():
     for idx, q in enumerate(questions, 1):
         print(f"{idx}. {q['question']}")
     try:
-        num = int(input("Enter the number of the question to edit: "))
+        num = int(validate_input("Enter the number of the question to edit: "))
         if not (1 <= num <= len(questions)):
             print("Invalid question number.")
+            input("\nPress Enter to continue...")
             return
     except ValueError:
         print("Invalid input.")
+        input("\nPress Enter to continue...")
         return
     q = questions[num-1]
     print(f"Current question: {q['question']}")
-    new_q = input("Enter new question (leave blank to keep current): ").strip()
+    new_q = validate_input("Enter new question (leave blank to keep current): ")
     if new_q:
         q['question'] = new_q
     for i in range(4):
         print(f"Current option {chr(65+i)}: {q['options'][i]}")
-        new_opt = input(f"Enter new option {chr(65+i)} (leave blank to keep current): ").strip()
+        new_opt = validate_input(f"Enter new option {chr(65+i)} (leave blank to keep current): ")
         if new_opt:
             q['options'][i] = f"{chr(65+i)}. {new_opt}"
-    new_ans = input(f"Enter new correct answer (A/B/C/D, leave blank to keep {q['correct_answer']}): ").strip().upper()
-    if new_ans in ['A', 'B', 'C', 'D']:
-        q['correct_answer'] = new_ans
+    new_ans = validate_input(f"Enter new correct answer (A/B/C/D, leave blank to keep {q['correct_answer']}): ")
+    if new_ans.upper() in ['A', 'B', 'C', 'D']:
+        q['correct_answer'] = new_ans.upper()
     save_questions(questions)
     print("Question updated successfully!\n")
+    input("\nPress Enter to continue...")
 
 def delete_question():
     clear_screen()
@@ -117,17 +123,20 @@ def delete_question():
     for idx, q in enumerate(questions, 1):
         print(f"{idx}. {q['question']}")
     try:
-        num = int(input("Enter the number of the question to delete: "))
+        num = int(validate_input("Enter the number of the question to delete: "))
         if not (1 <= num <= len(questions)):
             print("Invalid question number.")
+            input("\nPress Enter to continue...")
             return
     except ValueError:
         print("Invalid input.")
+        input("\nPress Enter to continue...")
         return
     confirm = validate_input(f"Are you sure you want to delete this question? (y/n): ", ["y", "n"])
-    if confirm == 'Y':
+    if confirm.upper() == 'Y':
         del questions[num-1]
         save_questions(questions)
-        print("Question deleted successfully!\n")
+        print("Question deleted successfully!")
     else:
-        print("Deletion cancelled.\n")
+        print("Deletion cancelled.")
+    input("\nPress Enter to continue...")

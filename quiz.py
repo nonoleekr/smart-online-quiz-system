@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 import sys
 import time
-from utils import load_json_file, save_json_file, validate_input, clear_screen
+from utils import load_json_file, save_json_file, validate_input, clear_screen, print_header
 
 def load_questions():
     path = os.path.join('data', 'questions.json')
@@ -124,6 +124,9 @@ def take_quiz():
     else:
         print("Great job! You got all questions correct.")
     save_result(name, result['correct'])
+    
+    # Add a pause so user can read the results
+    input("\nPress Enter to continue...")
 
 def view_leaderboard():
     clear_screen()
@@ -133,13 +136,16 @@ def view_leaderboard():
     
     if not leaderboard:
         print("No leaderboard data found.")
+        input("\nPress Enter to continue...")
         return
         
     if not isinstance(leaderboard, list):
         print("Leaderboard data is invalid.")
+        input("\nPress Enter to continue...")
         return
     if not leaderboard:
         print("Leaderboard is empty.")
+        input("\nPress Enter to continue...")
         return
     # Sort by score descending, then date
     leaderboard.sort(key=lambda x: (-x['score'], x['date']))
@@ -147,3 +153,6 @@ def view_leaderboard():
     print("-"*60)
     for idx, entry in enumerate(leaderboard[:10], 1):
         print(f"{idx:<5}{entry['name']:<15}{entry['score']:<7}{entry['date']}")
+    
+    # Add a pause so user can read the leaderboard
+    input("\nPress Enter to continue...")

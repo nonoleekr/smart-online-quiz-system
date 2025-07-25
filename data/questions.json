@@ -1,52 +1,502 @@
 [
-  {"question": "What is the correct file extension for Python files?","options": ["A. .pt","B. .py","C. .pyt","D. .python"],"correct_answer": "B"},
-  {"question": "Which of the following is a valid Python variable name?","options": ["A. 2value","B. value_2","C. value-2","D. value 2"],"correct_answer": "B"},
-  {"question": "Which function is used to display output in Python?","options": ["A. echo()","B. output()","C. print()","D. display()"],"correct_answer": "C"},
-  {"question": "What is the purpose of indentation in Python?","options": ["A. To define variable types","B. To define blocks of code","C. To improve speed","D. To comment the code"],"correct_answer": "B"},
-  {"question": "What does the CPU stand for?","options": ["A. Central Processing Unit","B. Computer Power Unit","C. Central Programming Unit","D. Control Processing Unit"],"correct_answer": "A"},
-  {"question": "What is the output of the following code? print(2 + 3 * 4)","options": ["A. 20","B. 14","C. 24","D. 18"],"correct_answer": "B"},
-  {"question": "Which data type is used to store a sequence of characters in Python?","options": ["A. int","B. bool","C. str","D. float"],"correct_answer": "C"},
-  {"question": "Which of these is NOT a basic component of a computer?","options": ["A. Input device","B. Output device","C. Wi-Fi Router","D. Processor"],"correct_answer": "C"},
-  {"question": "What is the keyword used to define a function in Python?","options": ["A. func","B. def","C. define","D. function"],"correct_answer": "B"},
-  {"question": "Which of the following is used to repeat a block of code in Python?","options": ["A. if","B. function","C. for","D. define"],"correct_answer": "C"},
-  {"question": "Which symbol is used to start a comment in Python?","options": ["A. //","B. <!--","C. #","D. /*"],"correct_answer": "C"},
-  {"question": "What is the output of print(len('Python'))?","options": ["A. 5","B. 6","C. 7","D. Error"],"correct_answer": "B"},
-  {"question": "Which of these is a Python tuple?","options": ["A. [1, 2, 3]","B. {1, 2, 3}","C. (1, 2, 3)","D. <1, 2, 3>"],"correct_answer": "C"},
-  {"question": "Which keyword is used to begin a loop in Python?","options": ["A. repeat","B. while","C. loop","D. iterate"],"correct_answer": "B"},
-  {"question": "What does RAM stand for?","options": ["A. Random Access Memory","B. Read Access Memory","C. Run All Memory","D. Real Active Memory"],"correct_answer": "A"},
-  {"question": "Which device is used to output audio from a computer?","options": ["A. Printer","B. Microphone","C. Speaker","D. Scanner"],"correct_answer": "C"},
-  {"question": "Which Python data structure is unordered?","options": ["A. List","B. Tuple","C. Dictionary","D. Set"],"correct_answer": "D"},
-  {"question": "Which of the following is not an operating system?","options": ["A. Linux","B. Windows","C. Python","D. macOS"],"correct_answer": "C"},
-  {"question": "What is the purpose of the 'input()' function in Python?","options": ["A. Display output","B. Stop the program","C. Accept user input","D. Check syntax"],"correct_answer": "C"},
-  {"question": "How do you insert comments in Python code?","options": ["A. // This is a comment","B. # This is a comment","C. /* This is a comment */","D. <!-- This is a comment -->"],"correct_answer": "B"},
-  {"question": "Which of the following is a Python boolean value?","options": ["A. YES","B. TRUE","C. True","D. correct"],"correct_answer": "C"},
-  {"question": "What is the default value of variables in Python?","options": ["A. 0","B. None","C. Null","D. Empty"],"correct_answer": "B"},
-  {"question": "Which shortcut key is commonly used to copy?","options": ["A. Ctrl + X","B. Ctrl + V","C. Ctrl + C","D. Ctrl + Z"],"correct_answer": "C"},
-  {"question": "Which loop runs at least once even if the condition is false?","options": ["A. while","B. for","C. do-while (not in Python)","D. loop"],"correct_answer": "C"},
-  {"question": "What is an IDE?","options": ["A. Internal Development Engine","B. Integrated Development Environment","C. Input Device Editor","D. Internet Debug Editor"],"correct_answer": "B"},
-  {"question": "Which symbol is used for exponentiation in Python?","options": ["A. ^","B. **","C. //","D. %"],"correct_answer": "B"},
-  {"question": "Which keyword is used to check conditions in Python?","options": ["A. loop","B. def","C. if","D. check"],"correct_answer": "C"},
-  {"question": "Which of these is NOT a valid Python data type?","options": ["A. int","B. float","C. real","D. str"],"correct_answer": "C"},
-  {"question": "Which command is used to install external Python packages?","options": ["A. pyinstall","B. python install","C. pip install","D. installpkg"],"correct_answer": "C"},
-  {"question": "What does GUI stand for?","options": ["A. General User Interface","B. Graphical User Interface","C. Guided User Interaction","D. Global UI"],"correct_answer": "B"},
-  {"question": "Which of the following is an input device?","options": ["A. Monitor","B. Keyboard","C. Speaker","D. Projector"],"correct_answer": "B"},
-  {"question": "How do you start a function in Python?","options": ["A. func()","B. def function_name():","C. function():","D. start function:"],"correct_answer": "B"},
-  {"question": "Which is used to check equality in Python?","options": ["A. =","B. ==","C. !=","D. equal()"],"correct_answer": "B"},
-  {"question": "What is the result of 5 // 2 in Python?","options": ["A. 2.5","B. 2","C. 3","D. Error"],"correct_answer": "B"},
-  {"question": "What kind of language is Python?","options": ["A. Compiled","B. Markup","C. Interpreted","D. Assembly"],"correct_answer": "C"},
-  {"question": "Which operator is used for string concatenation in Python?","options": ["A. ,","B. &","C. +","D. *"],"correct_answer": "C"},
-  {"question": "Which of the following is used to store multiple key-value pairs?","options": ["A. List","B. Set","C. Dictionary","D. Tuple"],"correct_answer": "C"},
-  {"question": "Which error type is caused by syntax issues?","options": ["A. Logical Error","B. Runtime Error","C. Syntax Error","D. Type Error"],"correct_answer": "C"},
-  {"question": "Which of the following is used to exit a loop early?","options": ["A. continue","B. stop","C. exit","D. break"],"correct_answer": "D"},
-  {"question": "Which method adds an item to the end of a list in Python?","options": ["A. append()","B. add()","C. insert()","D. push()"],"correct_answer": "A"},
-  {"question": "Which keyword is used to skip to the next iteration in a loop?","options": ["A. skip","B. break","C. pass","D. continue"],"correct_answer": "D"},
-  {"question": "Which file format is used for Python scripts?","options": ["A. .java","B. .exe","C. .py","D. .cpp"],"correct_answer": "C"},
-  {"question": "Which symbol is used for 'not equal to' in Python?","options": ["A. <>","B. !=","C. =!","D. =/="],"correct_answer": "B"},
-  {"question": "Which company created Python?","options": ["A. Google","B. Apple","C. Microsoft","D. None of the above"],"correct_answer": "D"},
-  {"question": "What does the 'int()' function do?","options": ["A. Converts input to float","B. Converts to string","C. Converts to integer","D. Checks integer"],"correct_answer": "C"},
-  {"question": "What will 'print(\"Hello\" * 3)' output?","options": ["A. HelloHelloHello","B. Hello3","C. Error","D. Hello Hello Hello"],"correct_answer": "A"},
-  {"question": "Which of the following is not a valid loop type in Python?","options": ["A. while","B. do-while","C. for","D. all are valid"],"correct_answer": "B"},
-  {"question": "What is the use of the 'range()' function in Python?","options": ["A. Define variables","B. Generate sequences","C. Print output","D. Check conditions"],"correct_answer": "B"},
-  {"question": "What is the shortcut to paste in most operating systems?","options": ["A. Ctrl + P","B. Ctrl + C","C. Ctrl + X","D. Ctrl + V"],"correct_answer": "D"},
-  {"question": "What is the highest level of data organization in a computer?","options": ["A. Bit","B. Byte","C. File","D. Database"],"correct_answer": "D"}
+  {
+    "question": "What is the correct file extension for Python files?",
+    "options": [
+      "A. .pt",
+      "B. .py",
+      "C. .pyt",
+      "D. .python"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which of the following is a valid Python variable name?",
+    "options": [
+      "A. 2value",
+      "B. value_2",
+      "C. value-2",
+      "D. value 2"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which function is used to display output in Python?",
+    "options": [
+      "A. echo()",
+      "B. output()",
+      "C. print()",
+      "D. display()"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What is the purpose of indentation in Python?",
+    "options": [
+      "A. To define variable types",
+      "B. To define blocks of code",
+      "C. To improve speed",
+      "D. To comment the code"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "What does the CPU stand for?",
+    "options": [
+      "A. Central Processing Unit",
+      "B. Computer Power Unit",
+      "C. Central Programming Unit",
+      "D. Control Processing Unit"
+    ],
+    "correct_answer": "A"
+  },
+  {
+    "question": "What is the output of the following code? print(2 + 3 * 4)",
+    "options": [
+      "A. 20",
+      "B. 14",
+      "C. 24",
+      "D. 18"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which data type is used to store a sequence of characters in Python?",
+    "options": [
+      "A. int",
+      "B. bool",
+      "C. str",
+      "D. float"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which of these is NOT a basic component of a computer?",
+    "options": [
+      "A. Input device",
+      "B. Output device",
+      "C. Wi-Fi Router",
+      "D. Processor"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What is the keyword used to define a function in Python?",
+    "options": [
+      "A. func",
+      "B. def",
+      "C. define",
+      "D. function"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which of the following is used to repeat a block of code in Python?",
+    "options": [
+      "A. if",
+      "B. function",
+      "C. for",
+      "D. define"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which symbol is used to start a comment in Python?",
+    "options": [
+      "A. //",
+      "B. <!--",
+      "C. #",
+      "D. /*"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What is the output of print(len('Python'))?",
+    "options": [
+      "A. 5",
+      "B. 6",
+      "C. 7",
+      "D. Error"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which of these is a Python tuple?",
+    "options": [
+      "A. [1, 2, 3]",
+      "B. {1, 2, 3}",
+      "C. (1, 2, 3)",
+      "D. <1, 2, 3>"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which keyword is used to begin a loop in Python?",
+    "options": [
+      "A. repeat",
+      "B. while",
+      "C. loop",
+      "D. iterate"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "What does RAM stand for?",
+    "options": [
+      "A. Random Access Memory",
+      "B. Read Access Memory",
+      "C. Run All Memory",
+      "D. Real Active Memory"
+    ],
+    "correct_answer": "A"
+  },
+  {
+    "question": "Which device is used to output audio from a computer?",
+    "options": [
+      "A. Printer",
+      "B. Microphone",
+      "C. Speaker",
+      "D. Scanner"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which Python data structure is unordered?",
+    "options": [
+      "A. List",
+      "B. Tuple",
+      "C. Dictionary",
+      "D. Set"
+    ],
+    "correct_answer": "D"
+  },
+  {
+    "question": "Which of the following is not an operating system?",
+    "options": [
+      "A. Linux",
+      "B. Windows",
+      "C. Python",
+      "D. macOS"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What is the purpose of the 'input()' function in Python?",
+    "options": [
+      "A. Display output",
+      "B. Stop the program",
+      "C. Accept user input",
+      "D. Check syntax"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "How do you insert comments in Python code?",
+    "options": [
+      "A. // This is a comment",
+      "B. # This is a comment",
+      "C. /* This is a comment */",
+      "D. <!-- This is a comment -->"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which of the following is a Python boolean value?",
+    "options": [
+      "A. YES",
+      "B. TRUE",
+      "C. True",
+      "D. correct"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What is the default value of variables in Python?",
+    "options": [
+      "A. 0",
+      "B. None",
+      "C. Null",
+      "D. Empty"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which shortcut key is commonly used to copy?",
+    "options": [
+      "A. Ctrl + X",
+      "B. Ctrl + V",
+      "C. Ctrl + C",
+      "D. Ctrl + Z"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which loop runs at least once even if the condition is false?",
+    "options": [
+      "A. while",
+      "B. for",
+      "C. do-while (not in Python)",
+      "D. loop"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What is an IDE?",
+    "options": [
+      "A. Internal Development Engine",
+      "B. Integrated Development Environment",
+      "C. Input Device Editor",
+      "D. Internet Debug Editor"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which symbol is used for exponentiation in Python?",
+    "options": [
+      "A. ^",
+      "B. **",
+      "C. //",
+      "D. %"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which keyword is used to check conditions in Python?",
+    "options": [
+      "A. loop",
+      "B. def",
+      "C. if",
+      "D. check"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which of these is NOT a valid Python data type?",
+    "options": [
+      "A. int",
+      "B. float",
+      "C. real",
+      "D. str"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which command is used to install external Python packages?",
+    "options": [
+      "A. pyinstall",
+      "B. python install",
+      "C. pip install",
+      "D. installpkg"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What does GUI stand for?",
+    "options": [
+      "A. General User Interface",
+      "B. Graphical User Interface",
+      "C. Guided User Interaction",
+      "D. Global UI"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which of the following is an input device?",
+    "options": [
+      "A. Monitor",
+      "B. Keyboard",
+      "C. Speaker",
+      "D. Projector"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "How do you start a function in Python?",
+    "options": [
+      "A. func()",
+      "B. def function_name():",
+      "C. function():",
+      "D. start function:"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which is used to check equality in Python?",
+    "options": [
+      "A. =",
+      "B. ==",
+      "C. !=",
+      "D. equal()"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "What is the result of 5 // 2 in Python?",
+    "options": [
+      "A. 2.5",
+      "B. 2",
+      "C. 3",
+      "D. Error"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "What kind of language is Python?",
+    "options": [
+      "A. Compiled",
+      "B. Markup",
+      "C. Interpreted",
+      "D. Assembly"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which operator is used for string concatenation in Python?",
+    "options": [
+      "A. ,",
+      "B. &",
+      "C. +",
+      "D. *"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which of the following is used to store multiple key-value pairs?",
+    "options": [
+      "A. List",
+      "B. Set",
+      "C. Dictionary",
+      "D. Tuple"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which error type is caused by syntax issues?",
+    "options": [
+      "A. Logical Error",
+      "B. Runtime Error",
+      "C. Syntax Error",
+      "D. Type Error"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which of the following is used to exit a loop early?",
+    "options": [
+      "A. continue",
+      "B. stop",
+      "C. exit",
+      "D. break"
+    ],
+    "correct_answer": "D"
+  },
+  {
+    "question": "Which method adds an item to the end of a list in Python?",
+    "options": [
+      "A. append()",
+      "B. add()",
+      "C. insert()",
+      "D. push()"
+    ],
+    "correct_answer": "A"
+  },
+  {
+    "question": "Which keyword is used to skip to the next iteration in a loop?",
+    "options": [
+      "A. skip",
+      "B. break",
+      "C. pass",
+      "D. continue"
+    ],
+    "correct_answer": "D"
+  },
+  {
+    "question": "Which file format is used for Python scripts?",
+    "options": [
+      "A. .java",
+      "B. .exe",
+      "C. .py",
+      "D. .cpp"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "Which symbol is used for 'not equal to' in Python?",
+    "options": [
+      "A. <>",
+      "B. !=",
+      "C. =!",
+      "D. =/="
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "Which company created Python?",
+    "options": [
+      "A. Google",
+      "B. Apple",
+      "C. Microsoft",
+      "D. None of the above"
+    ],
+    "correct_answer": "D"
+  },
+  {
+    "question": "What does the 'int()' function do?",
+    "options": [
+      "A. Converts input to float",
+      "B. Converts to string",
+      "C. Converts to integer",
+      "D. Checks integer"
+    ],
+    "correct_answer": "C"
+  },
+  {
+    "question": "What will 'print(\"Hello\" * 3)' output?",
+    "options": [
+      "A. HelloHelloHello",
+      "B. Hello3",
+      "C. Error",
+      "D. Hello Hello Hello"
+    ],
+    "correct_answer": "A"
+  },
+  {
+    "question": "Which of the following is not a valid loop type in Python?",
+    "options": [
+      "A. while",
+      "B. do-while",
+      "C. for",
+      "D. all are valid"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "What is the use of the 'range()' function in Python?",
+    "options": [
+      "A. Define variables",
+      "B. Generate sequences",
+      "C. Print output",
+      "D. Check conditions"
+    ],
+    "correct_answer": "B"
+  },
+  {
+    "question": "What is the shortcut to paste in most operating systems?",
+    "options": [
+      "A. Ctrl + P",
+      "B. Ctrl + C",
+      "C. Ctrl + X",
+      "D. Ctrl + V"
+    ],
+    "correct_answer": "D"
+  },
+  {
+    "question": "What is the highest level of data organization in a computer?",
+    "options": [
+      "A. Bit",
+      "B. Byte",
+      "C. File",
+      "D. Database"
+    ],
+    "correct_answer": "D"
+  }
 ]

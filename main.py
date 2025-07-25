@@ -1,7 +1,7 @@
 # Main driver script (program entry point) 
 from quiz import take_quiz, view_leaderboard
 from admin import admin_mode
-from utils import exit_program, clear_screen, validate_input
+from utils import exit_program, clear_screen, validate_input, print_header
 
 def main_menu():
     while True:

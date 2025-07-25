@@ -58,7 +58,7 @@ def add_question():
     questions.append({
         'question': question,
         'options': options,
-        'answer': answer
+        'correct_answer': answer
     })
     save_questions(questions)
     print("Question added successfully!\n")
@@ -73,7 +73,7 @@ def search_question():
             print(f"\nQ{idx}: {q['question']}")
             for opt in q['options']:
                 print(opt)
-            print(f"Answer: {q['answer']}")
+            print(f"Answer: {q['correct_answer']}")
             found = True
     if not found:
         print("No questions found with that keyword.\n")
@@ -101,9 +101,9 @@ def edit_question():
         new_opt = input(f"Enter new option {chr(65+i)} (leave blank to keep current): ").strip()
         if new_opt:
             q['options'][i] = f"{chr(65+i)}. {new_opt}"
-    new_ans = input(f"Enter new correct answer (A/B/C/D, leave blank to keep {q['answer']}): ").strip().upper()
+    new_ans = input(f"Enter new correct answer (A/B/C/D, leave blank to keep {q['correct_answer']}): ").strip().upper()
     if new_ans in ['A', 'B', 'C', 'D']:
-        q['answer'] = new_ans
+        q['correct_answer'] = new_ans
     save_questions(questions)
     print("Question updated successfully!\n")
 

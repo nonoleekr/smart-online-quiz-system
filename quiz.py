@@ -52,11 +52,11 @@ def take_quiz():
             if answer in valid_answers:
                 break
             print("Answer not valid. Please enter A, B, C, or D.")
-        if answer == q['answer']:
+        if answer == q['correct_answer']:
             print("Correct!")
             score += 1
         else:
-            print(f"Incorrect. The correct answer is {q['answer']}")
+            print(f"Incorrect. The correct answer is {q['correct_answer']}")
     print(f"\nQuiz complete! {name}, your score: {score}/{len(quiz_questions)}\n")
     save_result(name, score, len(quiz_questions))
 

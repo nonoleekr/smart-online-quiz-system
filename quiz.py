@@ -143,6 +143,7 @@ def take_quiz():
             break
     # Calculate score and feedback
     result = calculate_score(user_answers, quiz_questions)
+    print("--------------------------------")
     print(f"\nQuiz complete! {name}, your score: {result['correct']}/10")
     print(f"Correct: {result['correct']}, Incorrect: {result['incorrect']}, Skipped: {result['skipped']}")
     print(f"Performance: {result['feedback']} ({result['percent']:.0f}%)\n")

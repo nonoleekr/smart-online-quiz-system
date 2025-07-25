@@ -1,18 +1,20 @@
 # Main driver script (program entry point) 
 from quiz import take_quiz, view_leaderboard
 from admin import admin_mode
-from utils import exit_program
+from utils import exit_program, clear_screen, validate_input
 
 def main_menu():
     while True:
-        print("\n--------------------------------")
-        print("Main Menu")
+        clear_screen()
+        print("\n")
+        print_header("Main Menu")
         print("1. Take Quiz")
         print("2. View Leaderboard")
         print("3. Admin Mode")
         print("4. Exit")
-        print("--------------------------------")
-        choice = input("Please select an option (1-4): ")
+        print("="*60)
+        choice = validate_input("Please select an option (1-4): ", ["1", "2", "3", "4"])
+        
         if choice == "1":
             take_quiz()
         elif choice == "2":
@@ -21,8 +23,6 @@ def main_menu():
             admin_mode()
         elif choice == "4":
             exit_program()
-        else:
-            print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
     main_menu()

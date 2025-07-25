@@ -1,60 +1,31 @@
 # Contains quiz-related logic (load, take quiz, score)
-import json
 import random
 import os
 from datetime import datetime
-import threading
 import sys
 import time
-import stat
+from utils import load_json_file, save_json_file, validate_input, clear_screen
 
 def load_questions():
     path = os.path.join('data', 'questions.json')
-    with open(path, 'r', encoding='utf-8') as f:
-        questions = json.load(f)
-    return questions
+    return load_json_file(path)
 
 def save_result(name, score):
     path = os.path.join('data', 'leaderboard.json')
-    # Set file to writable before writing (handle cross-platform)
-    if os.path.exists(path):
-        try:
-            if os.name == 'nt':
-                os.chmod(path, stat.S_IWRITE)
-            else:
-                os.chmod(path, 0o666)
-        except Exception:
-            pass
     # Load existing leaderboard
-    if os.path.exists(path):
-        with open(path, 'r', encoding='utf-8') as f:
-            try:
-                data = json.load(f)
-                if isinstance(data, list):
-                    leaderboard = data
-                else:
-                    leaderboard = []
-            except Exception:
-                leaderboard = []
-    else:
+    leaderboard = load_json_file(path)
+    if not isinstance(leaderboard, list):
         leaderboard = []
-    # Append new result (no 'total')
+    
+    # Append new result
     leaderboard.append({
         'name': name,
         'score': score,
         'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     })
-    # Save back
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(leaderboard, f, indent=2)
-    # Set file to read-only after writing (handle cross-platform)
-    try:
-        if os.name == 'nt':
-            os.chmod(path, stat.S_IREAD)
-        else:
-            os.chmod(path, 0o444)
-    except Exception:
-        pass
+    
+    # Save back with read-only protection
+    save_json_file(path, leaderboard, read_only=True)
 
 def calculate_score(user_answers, quiz_questions):
     total = len(quiz_questions)
@@ -101,9 +72,10 @@ def calculate_score(user_answers, quiz_questions):
     }
 
 def take_quiz():
+    clear_screen()
     questions = load_questions()
-    print("\nWelcome to the Python & Computer Basics Quiz!")
-    name = input("Enter your name: ").strip()
+    print_header("Python & Computer Basics Quiz")
+    name = validate_input("Enter your name: ")
     quiz_questions = random.sample(questions, 10)
     user_answers = []
     TOTAL_TIME_LIMIT = 120  # seconds for the whole quiz
@@ -119,21 +91,15 @@ def take_quiz():
         print(f"\nQ{idx}: {q['question']}")
         for opt in q['options']:
             print(opt)
-        valid_answers = {'A', 'B', 'C', 'D'}
-        user_answer = None
-        while True:
-            remaining = int(TOTAL_TIME_LIMIT - (time.time() - start_time))
-            if remaining <= 0:
-                print("\nTime's up for the quiz!")
-                break
-            answer = input(f"Your answer (A/B/C/D) [Time left: {remaining}s]: ").strip().upper()
-            if answer in valid_answers:
-                user_answer = answer
-                break
-            elif answer == '':
-                user_answer = None
-                break
-            print("Answer not valid. Please enter A, B, C, or D.")
+        valid_answers = ['A', 'B', 'C', 'D']
+        remaining = int(TOTAL_TIME_LIMIT - (time.time() - start_time))
+        if remaining <= 0:
+            print("\nTime's up for the quiz!")
+            user_answer = None
+        else:
+            prompt = f"Your answer (A/B/C/D) [Time left: {remaining}s]: "
+            answer = validate_input(prompt, valid_answers, allow_empty=True)
+            user_answer = answer if answer else None
         user_answers.append(user_answer)
         if (time.time() - start_time) >= TOTAL_TIME_LIMIT:
             print("\nTime's up for the quiz!")
@@ -143,8 +109,8 @@ def take_quiz():
             break
     # Calculate score and feedback
     result = calculate_score(user_answers, quiz_questions)
-    print("--------------------------------")
-    print(f"\nQuiz complete! {name}, your score: {result['correct']}/10")
+    print_header("Quiz Results")
+    print(f"Quiz complete! {name}, your score: {result['correct']}/10")
     print(f"Correct: {result['correct']}, Incorrect: {result['incorrect']}, Skipped: {result['skipped']}")
     print(f"Performance: {result['feedback']} ({result['percent']:.0f}%)\n")
     if result['incorrect_details']:
@@ -160,25 +126,24 @@ def take_quiz():
     save_result(name, result['correct'])
 
 def view_leaderboard():
+    clear_screen()
+    print_header("Leaderboard")
     path = os.path.join('data', 'leaderboard.json')
-    if not os.path.exists(path):
+    leaderboard = load_json_file(path)
+    
+    if not leaderboard:
         print("No leaderboard data found.")
         return
-    with open(path, 'r', encoding='utf-8') as f:
-        try:
-            leaderboard = json.load(f)
-            if not isinstance(leaderboard, list):
-                print("Leaderboard data is invalid.")
-                return
-        except Exception:
-            print("Leaderboard data is invalid.")
-            return
+        
+    if not isinstance(leaderboard, list):
+        print("Leaderboard data is invalid.")
+        return
     if not leaderboard:
         print("Leaderboard is empty.")
         return
     # Sort by score descending, then date
     leaderboard.sort(key=lambda x: (-x['score'], x['date']))
-    print("\nLeaderboard:")
     print(f"{'Rank':<5}{'Name':<15}{'Score':<7}{'Date'}")
+    print("-"*60)
     for idx, entry in enumerate(leaderboard[:10], 1):
         print(f"{idx:<5}{entry['name']:<15}{entry['score']:<7}{entry['date']}")

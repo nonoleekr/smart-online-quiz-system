@@ -3,6 +3,9 @@ import json
 import random
 import os
 from datetime import datetime
+import threading
+import sys
+import time
 
 def load_questions():
     path = os.path.join('data', 'questions.json')
@@ -42,21 +45,34 @@ def take_quiz():
     name = input("Enter your name: ").strip()
     quiz_questions = random.sample(questions, min(10, len(questions)))
     score = 0
+    TOTAL_TIME_LIMIT = 120  # seconds for the whole quiz
+    start_time = time.time()
     for idx, q in enumerate(quiz_questions, 1):
+        elapsed = time.time() - start_time
+        if elapsed >= TOTAL_TIME_LIMIT:
+            print("\nTime's up for the quiz!")
+            break
         print(f"\nQ{idx}: {q['question']}")
         for opt in q['options']:
             print(opt)
         valid_answers = {'A', 'B', 'C', 'D'}
         while True:
-            answer = input("Your answer (A/B/C/D): ").strip().upper()
+            remaining = int(TOTAL_TIME_LIMIT - (time.time() - start_time))
+            if remaining <= 0:
+                print("\nTime's up for the quiz!")
+                break
+            answer = input(f"Your answer (A/B/C/D) [Time left: {remaining}s]: ").strip().upper()
             if answer in valid_answers:
+                if answer == q['correct_answer']:
+                    print("Correct!")
+                    score += 1
+                else:
+                    print(f"Incorrect. The correct answer is {q['correct_answer']}")
                 break
             print("Answer not valid. Please enter A, B, C, or D.")
-        if answer == q['correct_answer']:
-            print("Correct!")
-            score += 1
-        else:
-            print(f"Incorrect. The correct answer is {q['correct_answer']}")
+        if (time.time() - start_time) >= TOTAL_TIME_LIMIT:
+            print("\nTime's up for the quiz!")
+            break
     print(f"\nQuiz complete! {name}, your score: {score}/{len(quiz_questions)}\n")
     save_result(name, score, len(quiz_questions))
 

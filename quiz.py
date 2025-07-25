@@ -39,19 +39,65 @@ def save_result(name, score, total):
     with open(path, 'w', encoding='utf-8') as f:
         json.dump(leaderboard, f, indent=2)
 
+def calculate_score(user_answers, quiz_questions):
+    total = len(quiz_questions)
+    correct = 0
+    incorrect = 0
+    skipped = 0
+    incorrect_details = []
+    for idx, (user_answer, q) in enumerate(zip(user_answers, quiz_questions)):
+        if user_answer is None:
+            skipped += 1
+            incorrect_details.append({
+                'question': q['question'],
+                'user_answer': 'Skipped',
+                'correct_answer': q['correct_answer'],
+                'options': q['options']
+            })
+        elif user_answer == q['correct_answer']:
+            correct += 1
+        else:
+            incorrect += 1
+            incorrect_details.append({
+                'question': q['question'],
+                'user_answer': user_answer,
+                'correct_answer': q['correct_answer'],
+                'options': q['options']
+            })
+    percent = (correct / total) * 100 if total > 0 else 0
+    if percent >= 90:
+        feedback = 'Excellent'
+    elif percent >= 70:
+        feedback = 'Good'
+    elif percent >= 50:
+        feedback = 'Fair'
+    else:
+        feedback = 'Needs Improvement'
+    return {
+        'correct': correct,
+        'incorrect': incorrect,
+        'skipped': skipped,
+        'total': total,
+        'percent': percent,
+        'feedback': feedback,
+        'incorrect_details': incorrect_details
+    }
+
 def take_quiz():
     questions = load_questions()
     print("\nWelcome to the Python & Computer Basics Quiz!")
     name = input("Enter your name: ").strip()
     quiz_questions = random.sample(questions, min(10, len(questions)))
-    score = 0
+    user_answers = []
     TOTAL_TIME_LIMIT = 120  # seconds for the whole quiz
     start_time = time.time()
-    incorrect_answers = []
     for idx, q in enumerate(quiz_questions, 1):
         elapsed = time.time() - start_time
         if elapsed >= TOTAL_TIME_LIMIT:
             print("\nTime's up for the quiz!")
+            # Mark remaining as skipped
+            for _ in range(idx, len(quiz_questions)+1):
+                user_answers.append(None)
             break
         print(f"\nQ{idx}: {q['question']}")
         for opt in q['options']:
@@ -66,26 +112,26 @@ def take_quiz():
             answer = input(f"Your answer (A/B/C/D) [Time left: {remaining}s]: ").strip().upper()
             if answer in valid_answers:
                 user_answer = answer
-                if answer == q['correct_answer']:
-                    print("Correct!")
-                    score += 1
-                else:
-                    print(f"Incorrect. The correct answer is {q['correct_answer']}")
-                    incorrect_answers.append({
-                        'question': q['question'],
-                        'user_answer': answer,
-                        'correct_answer': q['correct_answer'],
-                        'options': q['options']
-                    })
+                break
+            elif answer == '':
+                user_answer = None
                 break
             print("Answer not valid. Please enter A, B, C, or D.")
+        user_answers.append(user_answer)
         if (time.time() - start_time) >= TOTAL_TIME_LIMIT:
             print("\nTime's up for the quiz!")
+            # Mark remaining as skipped
+            for _ in range(idx+1, len(quiz_questions)+1):
+                user_answers.append(None)
             break
-    print(f"\nQuiz complete! {name}, your score: {score}/{len(quiz_questions)}\n")
-    if incorrect_answers:
-        print("Here are the questions you got wrong:")
-        for idx, item in enumerate(incorrect_answers, 1):
+    # Calculate score and feedback
+    result = calculate_score(user_answers, quiz_questions)
+    print(f"\nQuiz complete! {name}, your score: {result['correct']}/{result['total']}")
+    print(f"Correct: {result['correct']}, Incorrect: {result['incorrect']}, Skipped: {result['skipped']}")
+    print(f"Performance: {result['feedback']} ({result['percent']:.0f}%)\n")
+    if result['incorrect_details']:
+        print("Here are the questions you got wrong or skipped:")
+        for idx, item in enumerate(result['incorrect_details'], 1):
             print(f"\nQ: {item['question']}")
             for opt in item['options']:
                 print(opt)
@@ -93,7 +139,7 @@ def take_quiz():
             print(f"Correct answer: {item['correct_answer']}")
     else:
         print("Great job! You got all questions correct.")
-    save_result(name, score, len(quiz_questions))
+    save_result(name, result['correct'], result['total'])
 
 def view_leaderboard():
     path = os.path.join('data', 'leaderboard.json')

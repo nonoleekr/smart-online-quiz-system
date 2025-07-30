@@ -4,8 +4,6 @@ from utils import load_json_file, save_json_file, validate_input, clear_screen, 
 
 ADMIN_PASSWORD = 'admin123'  # Change as needed
 QUESTIONS_PATH = os.path.join('data', 'questions.json')
-print("hello world")
-
 def admin_mode():
     clear_screen()
     print_header("Admin Mode")
